@@ -22,7 +22,7 @@ public class App {
             }
         }
 
-        System.out.println("List files from locatio B");
+        System.out.println("\n List files from locatio B \n");
         File dirLocation_B = new File(DIR_B);
         File[] dir_b_Files = dirLocation_B.listFiles();
 
@@ -33,15 +33,21 @@ public class App {
                 String file = dir_b_Files[fileIntList].toString();
 
                 for (File bestand : dir_b_Files) {
-                    System.out.println("FREESPACE: " + bestand.getFreeSpace());
-                    System.out.println("CONIAL: " + bestand.getCanonicalPath());
-                    System.out.println("TOTAL: " + bestand.getTotalSpace());
+                    System.out.println("File: " + bestand.getCanonicalPath());
+                    System.out.println(prettySize(bestand.length()));
+                    System.out.println(" ");
                 }
 
                 if (null != file && file.length() > 0) {
-                    System.out.println(file.substring(file.lastIndexOf("\\") + 1, file.length()));
+                    System.out.println("DIR?! " + file.substring(file.lastIndexOf("\\") + 1, file.length()));
+
+                    System.out.println("Lezen over Path ipv File. Hiermee zou Human readable bijvoorbeeld veel makkelijker moeten gaan" );
                 }
             }
         }
+    }
+
+    private static String prettySize(long length) {
+        return "Size: " + length + " bytes \nHoe krijg ik dit vertaald van bytes naar Human readable? \n";
     }
 }
